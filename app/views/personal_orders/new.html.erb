@@ -1,4 +1,5 @@
-<%= form_for @personal_order, url: personal_orders_path do |f| %>
+<%= form_for @personal_order, url: order_personal_orders_path do |f| %>
+  You are going to add an order for <%= params[:order_id] %>
   <div>
     Your Name: <br>
     <%= f.text_field :name %>
