@@ -14,7 +14,7 @@ class PersonalOrdersController < ApplicationController
     # params_with_order = .merge(:order_id => @)
     if @personal_order.save
       flash[:notice] = 'saved!'
-      redirect_to orders_path
+      redirect_to order_path(:id => params[:order_id])
     else
       flash[:notice] = @personal_order.errors.full_messages;
       render :new
@@ -24,6 +24,13 @@ class PersonalOrdersController < ApplicationController
   def show
     @personal_order = PersonalOrder.new
     @order_ref = params[:id]
+  end
+
+  def destroy
+    @remove_order = PersonalOrder.find(params[:order_id])
+    @remove_order.destroy
+    flash[:notice] = "Cancelled your order!"
+    redirect_to order_path(:id => params[:id])
   end
 
   private
