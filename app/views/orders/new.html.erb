@@ -1,0 +1,15 @@
+<h1> Need a form here </h1>
+
+<div>
+  <%= form_for @order, url: orders_path do |f| %>
+    <div>
+      Restaurant Name: <br>
+      <%= f.text_field :restaurant %>
+    </div>
+    <div>
+      Menu URL: <br>
+      <%= f.text_field :menu_url %>
+    </div>
+    <%= f.submit "Create", :class => "submit" %>
+  <% end %>
+</div>

@@ -1,0 +1,9 @@
+<h1> All Orders </h1>
+<div class="order-list">
+  <% @orders.each do |order| %>
+    <h2> <%= order.restaurant %>
+  <% end %>
+</div>
+<div>
+  <%= link_to 'Make new order', new_order_path %>
+</div>
