@@ -10,6 +10,11 @@
 
   <body>
     <div>
+      <% if current_user %>
+        <%= link_to 'Log Out', logout_path %>
+      <% end %>
+    </div>
+    <div>
       <% if notice %>
         <%= notice %>
       <% end %>
