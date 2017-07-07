@@ -2,5 +2,10 @@
 I'm ordering from <%= @order.restaurant %>.
 A link to the menu can be found here: <%= @order.menu_url %>
 
+All current orders:
+<% @order.personal_orders.each do |p_order| %>
+  Order!
+<% end %>
+
 Make your personal orders below:
 <!-- filler -->
