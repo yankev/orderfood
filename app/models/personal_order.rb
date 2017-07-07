@@ -1,0 +1,2 @@
+class PersonalOrder < ApplicationRecord
+end
