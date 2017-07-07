@@ -3,10 +3,24 @@ I'm ordering from <%= @order.restaurant %>.
 A link to the menu can be found here: <%= @order.menu_url %>
 
 All current orders:
-<% @order.personal_orders.each do |p_order| %>
-  Order!
-<% end %>
+<div>
+  <ul>
+    <% @order.personal_orders.each do |p_order| %>
+    <li>
+      <%= p_order.name %>
+      <%= p_order.items %>
+      <%= p_order.price %>
+    </li>
+      <%= link_to 'Cancel Order', order_personal_order_path(p_order),
+              data: {:confirm => 'Are you sure?'}, :method => :delete %>
+  <% end %>
+  </ul>
+</div>
 
 Make your personal orders below
 <!-- filler -->
-<%= link_to 'Get your order in!', new_personal_order_path %>  
+<div>
+  <%= link_to 'Get your order in!', new_order_personal_order_path(:order_id => @order.id) %>
+  <br>
+  <%= link_to 'Remove Order!', order_path(@order), :method => :delete, data: {:confirm => 'Are you sure?'} %>
+<div>

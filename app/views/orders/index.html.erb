@@ -1,7 +1,8 @@
 <h1> All Orders </h1>
 <div class="order-list">
   <% @orders.each do |order| %>
-    <h2> <%= order.restaurant %>
+      <h2> <%= order.restaurant %> </h2>
+      <%= link_to 'Show', order_path(:id => order.id) %>
   <% end %>
 </div>
 <div>
