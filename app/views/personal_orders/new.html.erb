@@ -1,0 +1,15 @@
+<%= form_for @personal_order, url: personal_orders_path do |f| %>
+  <div>
+    Your Name: <br>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    What would you like?: <br>
+    <%= f.text_field :items %>
+  </div>
+  <div>
+    Price: <br>
+    <%= f.text_field :price %>
+  </div>
+  <%= f.submit "Create", :class => "submit" %>
+<% end %>
