@@ -11,6 +11,7 @@ class PersonalOrdersController < ApplicationController
     @personal_order = PersonalOrder.new(personal_order_params)
     # add the referenced object id as well
     @personal_order.order_id = params[:order_id]
+    @personal_order.user_id = current_user.id
     # params_with_order = .merge(:order_id => @)
     if @personal_order.save
       flash[:notice] = 'saved!'

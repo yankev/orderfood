@@ -10,9 +10,11 @@ All current orders:
       <%= p_order.name %>
       <%= p_order.items %>
       <%= p_order.price %>
+      <% if current_user.id == p_order.user_id %>
+        <%= link_to 'Cancel Order', order_personal_order_path(p_order),
+          data: {:confirm => 'Are you sure?'}, :method => :delete %>
+      <% end %>
     </li>
-      <%= link_to 'Cancel Order', order_personal_order_path(p_order),
-              data: {:confirm => 'Are you sure?'}, :method => :delete %>
   <% end %>
   </ul>
 </div>
