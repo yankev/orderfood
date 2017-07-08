@@ -34,6 +34,7 @@ class OrdersController < ApplicationController
     @order.ordered = true
     if @order.save
       flash[:notice] = "The order has been confirmed."
+      redirect_to(order_path(@order))
     else
       flash[:notice] = "Something happened and the order was not confirmed."
     end

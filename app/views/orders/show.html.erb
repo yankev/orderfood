@@ -12,7 +12,9 @@
       <th>Name</th>
       <th>Items</th>
       <th>Price</th>
-      <th>Actions</th>
+      <% unless @order.ordered %>
+        <th>Actions</th>
+      <% end %>
     </tr>
     <% @order.personal_orders.each_with_index do |p_order, i| %>
     <tr>
@@ -21,7 +23,7 @@
       <td><%= p_order.items %></td>
       <td><%= p_order.price %></td>
       <td>
-        <% if current_user.id == p_order.user_id %>
+        <% if current_user.id == p_order.user_id && !@order.ordered %>
           <%= link_to 'Cancel Order', order_personal_order_path(p_order),
             data: {:confirm => 'Are you sure?'}, :method => :delete %>
         <% end %>

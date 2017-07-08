@@ -1,15 +1,14 @@
 <% if @parent_order.ordered %>
   <br>
-  This order has been made, sorry!
+  This order has already been made, sorry!
   <br><br>
   <%= link_to 'Back to the order', order_path(@parent_order) %>
 <% else %>
   <div class="rcorners2">
     <%= form_for @personal_order, url: order_personal_orders_path do |f| %>
-      You are going to add an order for <%= params[:order_id] %>
+      You are going to add an order for: <%= @parent_order.restaurant %>
       <div class="form-group">
-        Your Name: <br>
-        <%= f.text_field :name %>
+        Your name: <%= current_user.name %>
       </div>
       <div class="form-group">
         What would you like?: <br>
