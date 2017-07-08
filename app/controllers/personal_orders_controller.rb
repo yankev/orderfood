@@ -15,7 +15,6 @@ class PersonalOrdersController < ApplicationController
     @personal_order.order_id = params[:order_id]
     @personal_order.user_id = current_user.id
     @personal_order.name = current_user.name
-    debugger
     @personal_order.price = (@personal_order.price).round(2)
     # params_with_order = .merge(:order_id => @)
     if @personal_order.save
