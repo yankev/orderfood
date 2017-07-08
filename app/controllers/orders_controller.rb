@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    puts @order
+    @order.user_id = current_user.id
     if @order.save
       # If save succeeds, redirect to the index action
       flash[:notice] = "Your order was created successfully."

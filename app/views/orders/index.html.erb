@@ -3,6 +3,9 @@
   <% @orders.each do |order| %>
       <h2> <%= order.restaurant %> </h2>
       <%= link_to 'Show', order_path(:id => order.id) %>
+      <% if order.user_id && order.user_id == current_user.id %>
+        Edit
+      <% end %>
   <% end %>
 </div>
 <div>

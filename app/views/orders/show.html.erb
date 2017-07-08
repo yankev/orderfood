@@ -22,5 +22,7 @@ Make your personal orders below
 <div>
   <%= link_to 'Get your order in!', new_order_personal_order_path(:order_id => @order.id) %>
   <br>
-  <%= link_to 'Remove Order!', order_path(@order), :method => :delete, data: {:confirm => 'Are you sure?'} %>
+  <% if current_user.id == @order.user_id %>
+    <%= link_to 'Remove Order!', order_path(@order), :method => :delete, data: {:confirm => 'Are you sure?'} %>
+  <% end %>
 <div>
