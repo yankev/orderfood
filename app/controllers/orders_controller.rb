@@ -17,6 +17,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.user_id = current_user.id
+    @order.ordered = false
     if @order.save
       # If save succeeds, redirect to the index action
       flash[:notice] = "Your order was created successfully."
@@ -25,6 +26,16 @@ class OrdersController < ApplicationController
       # If save fails, redisplay the form so user can fix problems
       flash[:notice] = "All fields must be filled out"
       render('new')
+    end
+  end
+
+  def update
+    @order = Order.find(params[:id])
+    @order.ordered = true
+    if @order.save
+      flash[:notice] = "The order has been confirmed."
+    else
+      flash[:notice] = "Something happened and the order was not confirmed."
     end
   end
 

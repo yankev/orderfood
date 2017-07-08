@@ -5,6 +5,7 @@ class PersonalOrdersController < ApplicationController
 
   def new
     @personal_order = PersonalOrder.new
+    @parent_order = get_parent_order
   end
 
   def create
@@ -38,6 +39,10 @@ class PersonalOrdersController < ApplicationController
 
   def personal_order_params
     params.require(:personal_order).permit(:name, :price, :items)
+  end
+
+  def get_parent_order
+    Order.find(params[:order_id])
   end
 
 end

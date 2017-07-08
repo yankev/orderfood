@@ -1,6 +1,5 @@
-<h1> Showing </h1>
-I'm ordering from <%= @order.restaurant %>.
-A link to the menu can be found here: <%= @order.menu_url %>
+<h3>I'm ordering from <%= @order.restaurant %>. </h3>
+<h4> A link to the menu can be found here: <%= @order.menu_url %> </h4>
 
 All current orders:
 <div>
@@ -18,13 +17,18 @@ All current orders:
   <% end %>
   </ul>
 </div>
-
-Make your personal orders below
-<!-- filler -->
 <div>
-  <%= link_to 'Get your order in!', new_order_personal_order_path(:order_id => @order.id) %>
-  <br>
-  <% if current_user.id == @order.user_id %>
-    <%= link_to 'Remove Order!', order_path(@order), :method => :delete, data: {:confirm => 'Are you sure?'} %>
+  <% if !@order.ordered %>
+    <%= link_to 'Get your order in!', new_order_personal_order_path(:order_id => @order.id) %>
+    <br>
+    <% if current_user.id == @order.user_id %>
+      <%= link_to 'Make Order.', order_path(@order), :method => :patch, data: {:confirm => "Make the order?"} %>
+      <%= link_to 'Remove Order.', order_path(@order), :method => :delete, data: {:confirm => 'Are you sure?'} %>
+    <% end %>
+  <% else %>
+    Order has been made!
   <% end %>
+</div>
 <div>
+  <%= link_to 'Back to all orders', orders_path %>
+</div>
