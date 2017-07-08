@@ -30,6 +30,13 @@
       </td>
     </tr>
   <% end %>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Subtotal: <%= number_to_currency(@order.personal_orders.sum("price")) %></td>
+    <td></td>
+  </tr>
   </table>
 </div>
 <div style="margin-top: 20px; display: flex; justify-content: space-between">
