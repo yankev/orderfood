@@ -1,11 +1,27 @@
-<h1> All Orders </h1>
-<div class="order-list">
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3">All the orders, ever!</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+  </div>
+</div>
+<div>
   <% @orders.each do |order| %>
-      <h2> <%= order.restaurant %> </h2>
-      <%= link_to 'Show', order_path(:id => order.id) %>
-      <% if order.user_id && order.user_id == current_user.id %>
-        Edit
-      <% end %>
+    <ul class="list-group">
+      <li class="list-group-item" style="display: flex; justify-content: space-between">
+        <h2> <%= order.restaurant %> </h2>
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Action
+          </button>
+          <div class="dropdown-menu">
+            <%= link_to 'Show', order_path(:id => order.id), class: "dropdown-item" %>
+            <% if order.user_id && order.user_id == current_user.id %>
+              <%= link_to 'Edit', order_path(:id => order.id), class: "dropdown-item" %>
+            <% end %>
+          </div>
+        </div>
+      </li>
+    </ul>
   <% end %>
 </div>
 <div>

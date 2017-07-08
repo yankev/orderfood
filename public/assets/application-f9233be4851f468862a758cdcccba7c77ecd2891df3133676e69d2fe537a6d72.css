@@ -1,3 +1,18 @@
+/* line 4, /Users/kevin/Code/Rails/orderfood/app/assets/stylesheets/orders.scss */
+.order-list {
+  font-size: 12px;
+}
+
+/* line 9, /Users/kevin/Code/Rails/orderfood/app/assets/stylesheets/orders.scss */
+form .new_order {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+/* line 14, /Users/kevin/Code/Rails/orderfood/app/assets/stylesheets/orders.scss */
+form .submit {
+  width: 100px;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -10,7 +25,8 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
+
  *= bootstrap
- *= require_self
+
  */
+
