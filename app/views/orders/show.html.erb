@@ -30,13 +30,18 @@
   <% end %>
   </table>
 </div>
-<div style="margin-top: 20px">
+<div style="margin-top: 20px; display: flex; justify-content: space-between">
   <% if !@order.ordered %>
-    <%= link_to 'Get your order in!', new_order_personal_order_path(:order_id => @order.id), class: "btn btn-primary btn-med active" %>
-    <br>
+    <div>
+      <%= link_to 'Get your order in!', new_order_personal_order_path(:order_id => @order.id), class: "btn btn-primary btn-med active" %>
+    </div>
     <% if current_user.id == @order.user_id %>
-      <%= link_to 'Make Order.', order_path(@order), :method => :patch, data: {:confirm => "Make the order?"} %>
-      <%= link_to 'Remove Order.', order_path(@order), :method => :delete, data: {:confirm => 'Are you sure?'} %>
+    <div>
+      <%= link_to 'Make Order.', order_path(@order), :method => :patch, data: {:confirm => "Make the order?"},
+        class: "btn btn-info btn-med active" %>
+      <%= link_to 'Remove Order.', order_path(@order), :method => :delete, data: {:confirm => 'Are you sure?'},
+        class: "btn btn-danger btn-med active" %>
+    </div>
     <% end %>
   <% else %>
     Order has been made!

@@ -5,24 +5,38 @@
   </div>
 </div>
 <div>
-  <% @orders.each do |order| %>
-    <ul class="list-group">
-      <li class="list-group-item" style="display: flex; justify-content: space-between">
-        <h2> <%= order.restaurant %> </h2>
-        <div class="dropdown">
-          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Action
-          </button>
-          <div class="dropdown-menu">
-            <%= link_to 'Show', order_path(:id => order.id), class: "dropdown-item" %>
-            <% if order.user_id && order.user_id == current_user.id %>
-              <%= link_to 'Edit', order_path(:id => order.id), class: "dropdown-item" %>
-            <% end %>
+<table class="table table-striped table-bordered">
+  <tr>
+    <th></th>
+    <th>Restaurant</th>
+    <th>Who's Ordering</th>
+    <th></th>
+  </tr>
+    <% @orders.each_with_index do |order, i| %>
+      <tr>
+        <td><%= i + 1 %> </td>
+        <td><%= order.restaurant %></td>
+        <td>
+          <% if order.user_id && User.find(order.user_id) %>
+            <%= User.find(order.user_id).name %>
+          <% end %>
+        </td>
+        <td>
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Action
+            </button>
+            <div class="dropdown-menu">
+              <%= link_to 'Show', order_path(:id => order.id), class: "dropdown-item" %>
+              <% if order.user_id && order.user_id == current_user.id %>
+                <%= link_to 'Edit', order_path(:id => order.id), class: "dropdown-item" %>
+              <% end %>
+            </div>
           </div>
-        </div>
-      </li>
-    </ul>
-  <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
 </div>
 <div>
   <%= link_to 'Make new order', new_order_path %>
