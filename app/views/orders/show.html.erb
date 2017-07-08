@@ -21,7 +21,7 @@
       <td><%= i + 1 %> </td>
       <td><%= p_order.name %></td>
       <td><%= p_order.items %></td>
-      <td><%= p_order.price %></td>
+      <td><%= number_to_currency(p_order.price) %></td>
       <td>
         <% if current_user.id == p_order.user_id && !@order.ordered %>
           <%= link_to 'Cancel Order', order_personal_order_path(p_order),
