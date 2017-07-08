@@ -4,20 +4,22 @@
   <br><br>
   <%= link_to 'Back to the order', order_path(@parent_order) %>
 <% else %>
-  <%= form_for @personal_order, url: order_personal_orders_path do |f| %>
-    You are going to add an order for <%= params[:order_id] %>
-    <div>
-      Your Name: <br>
-      <%= f.text_field :name %>
-    </div>
-    <div>
-      What would you like?: <br>
-      <%= f.text_field :items %>
-    </div>
-    <div>
-      Price: <br>
-      <%= f.text_field :price %>
-    </div>
-    <%= f.submit "Create", :class => "submit" %>
+  <div class="rcorners2">
+    <%= form_for @personal_order, url: order_personal_orders_path do |f| %>
+      You are going to add an order for <%= params[:order_id] %>
+      <div class="form-group">
+        Your Name: <br>
+        <%= f.text_field :name %>
+      </div>
+      <div class="form-group">
+        What would you like?: <br>
+        <%= f.text_field :items %>
+      </div>
+      <div class="form-group">
+        Price: <br>
+        <%= f.text_field :price %>
+      </div>
+      <%= f.submit "Create", :class => "submit" %>
+  </div>
   <% end %>
 <% end %>
