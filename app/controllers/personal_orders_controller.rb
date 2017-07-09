@@ -12,16 +12,15 @@ class PersonalOrdersController < ApplicationController
   def create
     @parent_order = get_parent_order
     @personal_order = PersonalOrder.new(personal_order_params)
+    @personal_order.order_id = params[:order_id]
+    @personal_order.user_id = current_user.id
+    @personal_order.name = current_user.name
     if !@personal_order.valid?
       flash[:notice] = @personal_order.errors.full_messages;
       render :new
     else
-      # add the referenced object id as well
-      @personal_order.order_id = params[:order_id]
-      @personal_order.user_id = current_user.id
-      @personal_order.name = current_user.name
+      # the following is an adjustment on the price
       @personal_order.price = (@personal_order.price).round(2)
-      # params_with_order = .merge(:order_id => @)
       if @personal_order.save
         flash[:notice] = 'saved!'
         redirect_to order_path(:id => params[:order_id])
