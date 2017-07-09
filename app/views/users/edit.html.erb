@@ -1,0 +1,16 @@
+<h4>Edit</h4>
+<%= form_for(current_user) do |f| %>
+  <div>
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div>
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+    </div>
+    <div>
+      <%= f.submit %>
+    </div>
+  </div>
+<% end %>
