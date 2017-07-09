@@ -13,7 +13,7 @@
     <th></th>
     <th>Restaurant</th>
     <th>Who's Ordering</th>
-    <th>Status</th>
+    <th onclick="order()">Status: <span id="status-indicator">All</span></th>
     <th></th>
   </tr>
     <% @orders.each_with_index do |order, i| %>
@@ -53,3 +53,16 @@
     <% end %>
   </table>
 </div>
+
+<script>
+ var statusArray = ["All", "Closed", "Open"];
+ var currentStatus = "All";
+ var prevStatus;
+ var statusIndicator = document.getElementById("status-indicator");
+ function order() {
+   prevStatus = statusArray.shift();
+   currentStatus = statusArray[0];
+   statusArray.push(prevStatus);
+   statusIndicator.textContent = currentStatus;
+  };
+</script>
