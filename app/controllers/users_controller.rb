@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    redirect_to signup_path
+    redirect_to login_path
   end
 
   def edit
