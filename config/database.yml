@@ -5,3 +5,11 @@ development:
   pool: 5
   username: foodguy
   password: password1
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: food-order-db
+  pool: 5
+  username: foodguy
+  password: password1
