@@ -55,7 +55,7 @@ class OrdersController < ApplicationController
       flash[:notice] = "Your order info has been changed."
       redirect_to order_path(@order)
     else
-      flash[:notify] = @order.errors.full_messages
+      flash[:notice] = @order.errors.full_messages
       render :edit
     end
   end

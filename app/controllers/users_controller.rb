@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     if current_user.update(required_user_params)
       redirect_to orders_path
     else
+      flash[:notice] = "Whoops you're probably missing a field"
       render :edit
     end
   end
