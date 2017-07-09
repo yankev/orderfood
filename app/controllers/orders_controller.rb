@@ -10,6 +10,10 @@ class OrdersController < ApplicationController
     @order = Order.new
   end
 
+  def edit
+    @order = Order.find(params[:id])
+  end
+
   def show
     @order = Order.find(params[:id])
   end
@@ -34,7 +38,7 @@ class OrdersController < ApplicationController
     end
   end
 
-  def update
+  def update_release
     @order = Order.find(params[:id])
     @order.ordered = true
     if @order.save
@@ -42,6 +46,17 @@ class OrdersController < ApplicationController
       redirect_to(order_path(@order))
     else
       flash[:notice] = "Something happened and the order was not confirmed."
+    end
+  end
+
+  def update
+    @order = Order.find(params[:id])
+    if @order.update(order_params)
+      flash[:notice] = "Your order info has been changed."
+      redirect_to order_path(@order)
+    else
+      flash[:notify] = @order.errors.full_messages
+      render :edit
     end
   end
 

@@ -1,0 +1,21 @@
+<div id="edit-form">
+  <%= form_for @order, url: order_path(@order) do |f| %>
+    <div>
+      Restaurant Name: <br>
+      <%= f.text_field :restaurant, :value => @order.restaurant %>
+    </div>
+    <div>
+      Menu URL: <br>
+      <%= f.text_field :menu_url, value: @order.menu_url %>
+    </div>
+    <div>
+      Tip Percentage:
+      <%= f.number_field :tip, value: @order.tip %>
+    </div>
+    <div>
+      Tax Percentage:
+      <%= f.number_field :tax, value: @order.tax %>
+    </div>
+    <%= f.submit "Update", :class => "submit" %>
+  <% end %>
+</div>
