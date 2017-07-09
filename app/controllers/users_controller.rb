@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     @user = User.new(required_user_params)
     if @user.save
       flash[:notice] = "Great!"
-      redirect_to users_path
+      redirect_to login_path
     else
       flash[:notice] = "Error"
       render :new
