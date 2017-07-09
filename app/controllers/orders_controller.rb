@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user
 
   def index
-    @orders = Order.all
+    @orders = Order.all.order(created_at: :desc)
   end
 
   def new
