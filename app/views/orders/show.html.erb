@@ -1,5 +1,7 @@
 <h3>I'm ordering from <%= @order.restaurant %>. </h3>
 <h4> A link to the menu can be found here: <%= @order.menu_url %> </h4>
+<h4> Tax: <%= number_to_percentage(@order.tax, precision: 0) %></h4>
+<h4> Tip: <%= number_to_percentage(@order.tip, precision: 0) %></h4>
 
 <p class="bg-info">
   <h4>All current orders:</h4>
@@ -12,6 +14,7 @@
       <th>Name</th>
       <th>Items</th>
       <th>Price</th>
+      <th>Amount Owing </th>
       <% unless @order.ordered %>
         <th>Actions</th>
       <% end %>
@@ -22,6 +25,7 @@
       <td><%= p_order.name %></td>
       <td><%= p_order.items %></td>
       <td><%= number_to_currency(p_order.price) %></td>
+      <td><%= number_to_currency(p_order.price * (1 + (@order.tax.to_f + @order.tip.to_f) / 100)) %> </td>
       <td>
         <% if current_user.id == p_order.user_id && !@order.ordered %>
           <%= link_to 'Cancel Order', order_personal_order_path(p_order),
@@ -31,11 +35,9 @@
     </tr>
   <% end %>
   <tr>
-    <td></td>
-    <td></td>
-    <td></td>
+    <td></td><td></td><td></td>
     <td>Subtotal: <%= number_to_currency(@order.personal_orders.sum("price")) %></td>
-    <td></td>
+    <td>Total: <%= number_to_currency((1 + ((@order.tax.to_f + @order.tip.to_f) / 100)) * @order.personal_orders.sum("price")) %></td>
   </tr>
   </table>
 </div>

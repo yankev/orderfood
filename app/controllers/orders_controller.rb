@@ -18,6 +18,11 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.user_id = current_user.id
     @order.ordered = false
+    # adjust the prices
+    # @modified_p_orders = @order.personal_orders
+    # @modified_p_orders.each do |p_order|
+    #   p_order.price = p_order.price * (1 + (@order.tax.to_f + @order.tip.to_f) / 100)
+    # end
     if @order.save
       # If save succeeds, redirect to the index action
       flash[:notice] = "Your order was created successfully."
@@ -50,7 +55,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:restaurant, :menu_url)
+    params.require(:order).permit(:restaurant, :menu_url, :tip, :tax)
   end
 
 end

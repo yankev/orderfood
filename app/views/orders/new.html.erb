@@ -10,6 +10,14 @@
       Menu URL: <br>
       <%= f.text_field :menu_url %>
     </div>
+    <div>
+      Tip Percentage:
+      <%= f.number_field :tip %>
+    </div>
+    <div>
+      Tax Percentage:
+      <%= f.number_field :tax %>
+    </div>
     <%= f.submit "Create", :class => "submit" %>
   <% end %>
 </div>

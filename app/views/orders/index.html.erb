@@ -13,6 +13,7 @@
     <th></th>
     <th>Restaurant</th>
     <th>Who's Ordering</th>
+    <th>Status</th>
     <th></th>
   </tr>
     <% @orders.each_with_index do |order, i| %>
@@ -22,6 +23,17 @@
         <td>
           <% if order.user_id && User.find(order.user_id) %>
             <%= User.find(order.user_id).name %>
+          <% end %>
+        </td>
+        <td>
+          <% if order.ordered %>
+            <div class="status-issue">
+              Closed
+            </div>
+          <% else %>
+            <div class="status-success">
+              Open
+            </div>
           <% end %>
         </td>
         <td>
