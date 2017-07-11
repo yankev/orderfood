@@ -1,24 +1,7 @@
-# README
+# Group Food Ordering Manager
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is built on top of the Ruby on Rails framework with Postgres as the database.
+The app is built to handle food orders by allowing the primary user to create an order, and subsequent users to add items onto that order. After the order is placed, the order will remain as a record, and will primarily be used to settle payments.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
+**Note**: Styling needs work :o
 * ...
